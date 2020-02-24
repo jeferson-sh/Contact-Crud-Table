@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Deletar Contato</h1>
+<div mat-dialog-content>
+  <p>Deseja deletar o contato {{Contact.nome }}? </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="remove()" cdkFocusInitial>Confirmar</button>
+</div>

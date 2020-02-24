@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher" placeholder="Ex. João">
+      <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+      <mat-error *ngIf="nameFormControl.hasError('minlength') && !nameFormControl.hasError('required')">
+        Por favor digite um nome válido.
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Nome é <strong>requerido!</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <!-- Phone Number Field-->
+    <mat-form-field class="example-full-width">
+      <mat-label>Telefone</mat-label>
+      <input type="tel" pattern="[0-9]{2}-[0-9]{1}-[0-9]{4}-[0-9]{4}" matInput [formControl]="phoneNumberFomrControl"
+        [errorStateMatcher]="matcher" placeholder="Ex. 83-9-9999-9999">
+      <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+      <mat-error *ngIf="phoneNumberFomrControl.hasError('minlength') && !phoneNumberFomrControl.hasError('required')">
+        Por favor digite um telefone válido
+      </mat-error>
+      <mat-error *ngIf="phoneNumberFomrControl.hasError('required')">
+        Telefone é <strong>requerido!</strong>
+      </mat-error>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancelar</button>
+      <button mat-button (click)="save()" type="submit" [disabled]="!phoneNumberFomrControl.valid">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
