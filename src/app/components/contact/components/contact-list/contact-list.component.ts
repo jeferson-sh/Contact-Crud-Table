@@ -1,15 +1,15 @@
-import { Component, OnInit, ViewChild, Inject, Input, Output, ComponentRef } from '@angular/core';
-import {Contact } from '../shared/contact';
-import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { ComponentType } from '@angular/cdk/portal';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatDialog, MatDialogConfig } from '@angular/material';
-import { DialogSingleDataComponent } from '../dialog-data/dialog-single-data.component';
-import { ComponentType } from '@angular/cdk/portal';
-import { DialogMultipleDataComponent } from '../dialog-data/dialog-multiple-data.component';
-import { ContactService } from '../Contact-service.service';
-import { ContactEditComponent } from '../Contact-edit/Contact-edit.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { Contact } from '../../../../shared/contact/contact';
+import { ContactService } from '../../service/contact-service.service';
+import { ContactEditComponent } from '../contact-edit/Contact-edit.component';
+import { DialogMultipleDataComponent } from '../dialog-multiple-data/dialog-multiple-data.component';
+import { DialogSingleDataComponent } from '../dialog-single-data/dialog-single-data.component';
 
 @Component({
   selector: 'app-Contact-list',
@@ -48,6 +48,12 @@ export class ContactListComponent implements OnInit {
     this.selection = new SelectionModel<Contact>(true, []);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    const paginatorIntl = this.paginator._intl;
+    paginatorIntl.nextPageLabel = 'Próxima página';
+    paginatorIntl.previousPageLabel = 'Página anterior';
+    paginatorIntl.firstPageLabel= 'Primeira página';
+    paginatorIntl.lastPageLabel= 'Última página';
+    paginatorIntl.itemsPerPageLabel='Itens por página';
   }
 
   /**Apply Filter Search */
@@ -79,9 +85,9 @@ export class ContactListComponent implements OnInit {
   }
 
   /**Remove singleContact row  */
-  openDialogSingleDeletion(Contact:Contact) {
+  openDialogSingleDeletion(contact:Contact) {
     let matDialogConfig = new MatDialogConfig<Contact>();
-    matDialogConfig.data =Contact;
+    matDialogConfig.data = contact;
     this.openDialog(matDialogConfig, DialogSingleDataComponent);
   }
   /**Remove rows selected */

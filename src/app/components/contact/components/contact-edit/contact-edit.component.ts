@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ContactService } from '../Contact-service.service';
-import { Contact } from '../shared/contact';
-import { ContactListComponent } from '../Contact-list/Contact-list.component';
+import { ContactService } from '../../service/contact-service.service';
+import { Contact } from '../../../../shared/contact/contact';
+import { ContactListComponent } from '../contact-list/Contact-list.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {

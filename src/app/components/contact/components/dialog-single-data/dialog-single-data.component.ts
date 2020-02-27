@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material';
-import {ContactService } from '../Contact-service.service';
-import {Contact } from '../shared/contact';
-import { ContactListComponent } from '../Contact-list/Contact-list.component';
+import { ContactListComponent } from '../contact-list/Contact-list.component';
+import { Contact } from '../../../../shared/contact/contact';
+import { ContactService } from '../../service/contact-service.service';
 @Component({
   selector: 'app-dialog-single-data',
   templateUrl: './dialog-single-data.component.html',
@@ -17,7 +17,6 @@ export class DialogSingleDataComponent{
   ){}
 
   private onNoClick(){
-    console.log(this.contact)
     this.dialogRef.close();
   }
 
