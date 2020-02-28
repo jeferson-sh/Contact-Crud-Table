@@ -1,5 +1,12 @@
+mat-toolbar{
+  position: sticky;
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 2;
+}
+
 table {
     width: 100%;
+    overflow: auto;
 }
 
 mat-form-field {
@@ -8,6 +15,12 @@ mat-form-field {
 }
 .fill-space{
   flex: auto;
+}
+
+mat-paginator{
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
 }
 
 button{
