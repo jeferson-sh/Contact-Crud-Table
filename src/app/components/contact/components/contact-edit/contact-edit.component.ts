@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { ContactService } from '../../service/contact-service.service';
 import { Contact } from '../../../../shared/contact/contact';
@@ -25,6 +25,8 @@ export class ContactEditComponent implements OnInit {
 
   private title: string;
 
+  private form: FormGroup;
+
   private nameFormControl: FormControl;
 
   private phoneNumberFomrControl: FormControl;
@@ -33,13 +35,14 @@ export class ContactEditComponent implements OnInit {
 
   private readonly durationInSeconds: number = 2;
 
-  constructor(private dialogRef: MatDialogRef<ContactListComponent>,
-    @Inject(MAT_DIALOG_DATA) private contact: Contact,
-    private contactService: ContactService,
-    private snackBar: MatSnackBar) {
+  constructor(private dialogRef: MatDialogRef<ContactListComponent>, @Inject(MAT_DIALOG_DATA) private contact: Contact, private contactService: ContactService, private snackBar: MatSnackBar) {
     this.title = 'Salvar novo Contato';
     this.nameFormControl = new FormControl('', [Validators.required, Validators.minLength(2)]);
     this.phoneNumberFomrControl = new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]);
+    this.form = new FormGroup({
+      nameFormControl: this.nameFormControl,
+      phoneNumberFomrControl: this.phoneNumberFomrControl
+    })
     this.setFormsControlsValues();
   }
 
@@ -72,9 +75,9 @@ export class ContactEditComponent implements OnInit {
   openSnackBar() {
     const config: MatSnackBarConfig = {
       duration: this.durationInSeconds * 1000,
-      data:{msg:`Contato ${this.contact.nome} salvo.`}
+      data: { msg: `Contato ${this.contact.nome} salvo.` }
     };
-    this.snackBar.openFromComponent(SnackbarComponent,config);
+    this.snackBar.openFromComponent(SnackbarComponent, config);
   }
 
 }

@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content>
-  <form class="example-form">
+  <form [formGroup]="form" class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Nome</mat-label>
       <input matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher" placeholder="Ex. João">
@@ -28,7 +28,7 @@
     </mat-form-field>
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Cancelar</button>
-      <button mat-button (click)="save()" type="submit" [disabled]="!phoneNumberFomrControl.valid">
+      <button mat-button (click)="save()" type="submit" [disabled]="!form.valid">
         Save
       </button>
     </div>
