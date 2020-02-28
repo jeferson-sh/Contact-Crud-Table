@@ -57,8 +57,8 @@ export class ContactListComponent implements OnInit {
   }
 
   /**Apply Filter Search */
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+  applyFilter(value: string) {
+    const filterValue = value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
@@ -99,9 +99,9 @@ export class ContactListComponent implements OnInit {
     }    
   }
 
-  openDialogEditContact(Contact:Contact){
+  openDialogEditContact(contact:Contact){
     let matDialogConfig = new MatDialogConfig<Contact>();
-    matDialogConfig.data =Contact;
+    matDialogConfig.data =contact;
     this.openDialog(matDialogConfig,ContactEditComponent);
   }
 

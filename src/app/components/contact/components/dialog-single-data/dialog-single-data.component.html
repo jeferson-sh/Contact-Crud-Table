@@ -1,6 +1,12 @@
 <h1 mat-dialog-title>Deletar Contato</h1>
 <div mat-dialog-content>
-  <p>Deseja deletar o contato {{contact.nome }}? </p>
+  <p>
+    Deseja deletar o contato {{contact.nome }}? 
+    <br>
+    <mat-error>
+      Esta operação <strong>não</strong> poderá ser desfeita!
+    </mat-error>
+  </p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>

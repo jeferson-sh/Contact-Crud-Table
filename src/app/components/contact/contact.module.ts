@@ -17,9 +17,12 @@ import { ContactEditComponent } from './components/contact-edit/Contact-edit.com
 import { ContactListComponent } from './components/contact-list/Contact-list.component';
 import { DialogSingleDataComponent } from './components/dialog-single-data/dialog-single-data.component';
 import { DialogMultipleDataComponent } from './components/dialog-multiple-data/dialog-multiple-data.component';
+import { PhonePipePipe } from './pipes/phone-pipe.pipe';
+import { MatSnackBarModule, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule({
-  declarations: [ContactListComponent,ContactEditComponent, DialogSingleDataComponent,DialogMultipleDataComponent],
+  declarations: [ContactListComponent, ContactEditComponent, DialogSingleDataComponent, DialogMultipleDataComponent, PhonePipePipe, SnackbarComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -28,19 +31,24 @@ import { DialogMultipleDataComponent } from './components/dialog-multiple-data/d
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatCardModule ,
+    MatCardModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     RouterModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
-  entryComponents: [DialogSingleDataComponent,DialogMultipleDataComponent,ContactEditComponent],
-  exports:[
+  entryComponents: [DialogSingleDataComponent,
+    DialogMultipleDataComponent,
+    ContactEditComponent,
+    SnackbarComponent
+  ],
+  exports: [
     RouterModule,
-   ContactListComponent
+    ContactListComponent
   ]
 })
-export class ContactModule { }
+export class ContactModule {}

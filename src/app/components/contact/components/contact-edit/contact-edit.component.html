@@ -16,14 +16,14 @@
     <!-- Phone Number Field-->
     <mat-form-field class="example-full-width">
       <mat-label>Telefone</mat-label>
-      <input type="tel" pattern="[0-9]{2}-[0-9]{1}-[0-9]{4}-[0-9]{4}" matInput [formControl]="phoneNumberFomrControl"
-        [errorStateMatcher]="matcher" placeholder="Ex. 83-9-9999-9999">
+      <input type="tel" pattern="[0-9]{11}" matInput [formControl]="phoneNumberFomrControl"
+        [errorStateMatcher]="matcher" placeholder="Ex. 83999999999">
       <!--<mat-hint>Errors appear instantly!</mat-hint>-->
-      <mat-error *ngIf="phoneNumberFomrControl.hasError('minlength') && !phoneNumberFomrControl.hasError('required')">
-        Por favor digite um telefone válido
+      <mat-error *ngIf="phoneNumberFomrControl.hasError('minlength') || phoneNumberFomrControl.hasError('maxlength') && !phoneNumberFomrControl.hasError('required')">
+        Por favor digite um número de telefone válido
       </mat-error>
       <mat-error *ngIf="phoneNumberFomrControl.hasError('required')">
-        Telefone é <strong>requerido!</strong>
+        Número de telefone é <strong>requerido!</strong>
       </mat-error>
     </mat-form-field>
     <div mat-dialog-actions>

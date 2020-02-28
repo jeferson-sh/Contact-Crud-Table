@@ -21,7 +21,7 @@
         <span>
             <mat-form-field>
                 <mat-label>Busca</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. João">
+                <input #search matInput (keyup)="applyFilter(search.value)" placeholder="Ex. João">
             </mat-form-field>
         </span>
         <span class="fill-space"></span>
@@ -60,7 +60,7 @@
             <!-- Phone Column -->
             <ng-container matColumnDef="telefone">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-                <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.telefone | phone:'BR' }} </td>
             </ng-container>
 
             <!-- Action Column -->
