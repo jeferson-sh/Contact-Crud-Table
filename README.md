@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # TwoWayDatabinding
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
@@ -29,4 +28,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # Contact-Crud-Table
 A crud for a contact table.
->>>>>>> d41d56ef1afd5a6dcea4f9d22382c882fbab433b
