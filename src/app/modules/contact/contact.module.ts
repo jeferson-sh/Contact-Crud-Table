@@ -9,17 +9,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { ContactEditComponent } from './components/contact-edit/Contact-edit.component';
-import { ContactListComponent } from './components/contact-list/Contact-list.component';
-import { DialogSingleDataComponent } from './components/dialog-single-data/dialog-single-data.component';
 import { DialogMultipleDataComponent } from './components/dialog-multiple-data/dialog-multiple-data.component';
-import { PhonePipePipe } from './pipes/phone-pipe.pipe';
-import { MatSnackBarModule, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { DialogSingleDataComponent } from './components/dialog-single-data/dialog-single-data.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { PhonePipePipe } from './pipes/phone-pipe.pipe';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
+import { ContactEditComponent } from './components/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [ContactListComponent, ContactEditComponent, DialogSingleDataComponent, DialogMultipleDataComponent, PhonePipePipe, SnackbarComponent],
@@ -47,8 +47,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     SnackbarComponent
   ],
   exports: [
-    RouterModule,
-    ContactListComponent
+    ContactListComponent, ContactEditComponent, DialogSingleDataComponent, DialogMultipleDataComponent, PhonePipePipe, SnackbarComponent
   ]
 })
 export class ContactModule {}

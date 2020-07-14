@@ -1,7 +1,7 @@
 export class Contact {
-    private _id: number;
-    private _nome: string;
-    private _telefone: number;
+    public _id: number;
+    public _nome: string;
+    public _telefone: number;
 
     /**
      *

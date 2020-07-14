@@ -3,8 +3,8 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '
 import { ErrorStateMatcher, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { ContactService } from '../../service/contact-service.service';
 import { Contact } from '../../../../shared/contact/contact';
-import { ContactListComponent } from '../contact-list/Contact-list.component';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { ContactListComponent } from '../contact-list/contact-list.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,22 +18,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-Contact-edit',
-  templateUrl: './Contact-edit.component.html',
-  styleUrls: ['./Contact-edit.component.css']
+  templateUrl: './contact-edit.component.html',
+  styleUrls: ['./contact-edit.component.css']
 })
 export class ContactEditComponent implements OnInit {
 
-  private title: string;
+  public title: string;
 
-  private form: FormGroup;
+  public form: FormGroup;
 
-  private nameFormControl: FormControl;
+  public nameFormControl: FormControl;
 
-  private phoneNumberFomrControl: FormControl;
+  public phoneNumberFomrControl: FormControl;
 
-  private matcher = new MyErrorStateMatcher();
+  public matcher = new MyErrorStateMatcher();
 
-  private readonly durationInSeconds: number = 2;
+  public readonly durationInSeconds: number = 2;
 
   constructor(private dialogRef: MatDialogRef<ContactListComponent>, @Inject(MAT_DIALOG_DATA) private contact: Contact, private contactService: ContactService, private snackBar: MatSnackBar) {
     this.title = 'Salvar novo Contato';
@@ -52,7 +52,7 @@ export class ContactEditComponent implements OnInit {
     }
   }
 
-  private setFormsControlsValues(): void {
+  public setFormsControlsValues(): void {
     if (this.contact) {
       this.title = 'Editar Contato';
       this.nameFormControl.setValue(this.contact.nome);
@@ -60,11 +60,11 @@ export class ContactEditComponent implements OnInit {
     }
   }
 
-  private onNoClick() {
+  public onNoClick() {
     this.dialogRef.close();
   }
 
-  private save() {
+  public save() {
     this.contact.nome = this.nameFormControl.value;
     this.contact.telefone = this.phoneNumberFomrControl.value;
     this.contactService.saveContact(this.contact);

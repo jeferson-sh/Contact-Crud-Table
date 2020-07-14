@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactModule } from './components/contact/contact.module';
+import { ContactModule } from './modules/contact/contact.module';
 
 
 @NgModule({
@@ -11,9 +11,9 @@ import { ContactModule } from './components/contact/contact.module';
     AppComponent  ],
   imports: [
     BrowserModule,
-    ContactModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ContactModule
     
   ],
   providers: [],

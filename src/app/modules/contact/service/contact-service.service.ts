@@ -7,9 +7,9 @@ import { Contact } from '../../../shared/contact/contact';
 export class ContactService {
   
   contacts: Contact[];
-  private readonly INVALID_INDEX: number = -1;
-  private readonly REMOVE_COUNT: number = 1;
-  private valuesCount: number;
+  public readonly INVALID_INDEX: number = -1;
+  public readonly REMOVE_COUNT: number = 1;
+  public valuesCount: number;
 
   constructor() { 
     this.contacts = [

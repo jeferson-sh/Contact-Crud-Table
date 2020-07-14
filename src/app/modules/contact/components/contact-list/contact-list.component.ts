@@ -7,35 +7,35 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Contact } from '../../../../shared/contact/contact';
 import { ContactService } from '../../service/contact-service.service';
-import { ContactEditComponent } from '../contact-edit/Contact-edit.component';
 import { DialogMultipleDataComponent } from '../dialog-multiple-data/dialog-multiple-data.component';
 import { DialogSingleDataComponent } from '../dialog-single-data/dialog-single-data.component';
+import { ContactEditComponent } from '../contact-edit/contact-edit.component';
 
 @Component({
   selector: 'app-Contact-list',
-  templateUrl: './Contact-list.component.html',
-  styleUrls: ['./Contact-list.component.css']
+  templateUrl: './contact-list.component.html',
+  styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
 
-  private contacts:Contact[];
+  public contacts:Contact[];
 
-  private displayedColumns: string[];
+  public displayedColumns: string[];
 
-  private pageSizeOptions: string[];
+  public pageSizeOptions: string[];
 
-  private dataSource: MatTableDataSource<Contact>;
+  public dataSource: MatTableDataSource<Contact>;
 
-  private selection: SelectionModel<Contact>;
+  public selection: SelectionModel<Contact>;
 
-  private readonly EMPTY:number = 0;
+  public readonly EMPTY:number = 0;
 
 
   @ViewChild(MatPaginator, { static: true })
-  private paginator: MatPaginator;
+  public paginator: MatPaginator;
 
   @ViewChild(MatSort, { static: true })
-  private sort: MatSort;
+  public sort: MatSort;
 
   constructor(private contactService: ContactService, private dialog: MatDialog) {
     this.displayedColumns = ['select', 'id', 'nome', 'telefone', 'ações'];
@@ -77,11 +77,11 @@ export class ContactListComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(Contact?:Contact): string {
-    if (!Contact) {
+  checkboxLabel(contact?:Contact): string {
+    if (!contact) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(Contact) ? 'deselect' : 'select'} row ${Contact.id + 1}`;
+    return `${this.selection.isSelected(contact) ? 'deselect' : 'select'} row ${contact.id + 1}`;
   }
 
   /**Remove singleContact row  */
@@ -114,13 +114,11 @@ export class ContactListComponent implements OnInit {
     let dialogRef = this.dialog.open(component, matDialogConfig);
     dialogRef.afterClosed().subscribe(() => {
       this.updateChangeList();
-      if(component === DialogMultipleDataComponent){
-        this.selection.clear();
-      }
+      this.selection.clear();
     })
   }
 
-  private updateChangeList() {
+  public updateChangeList() {
     this.dataSource._updateChangeSubscription();
   }
 }

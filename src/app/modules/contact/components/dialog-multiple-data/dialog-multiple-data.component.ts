@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA, MatSnackBarConfig } from '@angular/material';
 import { Contact } from '../../../../shared/contact/contact';
 import { ContactService } from '../../service/contact-service.service';
-import { ContactListComponent } from '../contact-list/Contact-list.component';
+import { ContactListComponent } from '../contact-list/contact-list.component';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
@@ -12,22 +12,22 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 })
 
 export class DialogMultipleDataComponent {
-  private readonly durationInSeconds: number;
+  public readonly durationInSeconds: number;
 
   constructor(
     private dialogRef: MatDialogRef<ContactListComponent>,
-    @Inject(MAT_DIALOG_DATA) private contacts: Contact[],
+    @Inject(MAT_DIALOG_DATA) public contacts: Contact[],
     private contactService: ContactService,
     private snackBar: MatSnackBar
   ) {
     this.durationInSeconds = 2;
   }
 
-  private onNoClick() {
+  public onNoClick() {
     this.dialogRef.close();
   }
 
-  private remove() {
+  public remove() {
     this.contactService.deleteAllSelected(this.contacts);
     this.dialogRef.close();
     this.openSnackBar();
