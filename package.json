@@ -21,6 +21,10 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@angular/upgrade": "^13.2.4",
+    "angular": "^1.8.2",
+    "ansi-html": "^0.0.7",
+    "engine.io": "^6.1.3",
     "hammerjs": "^2.0.8",
     "libphonenumber-js": "^1.7.44",
     "rxjs": "~6.4.0",
@@ -29,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.24",
-    "@angular/cli": "~8.3.24",
+    "@angular/cli": "^13.2.5",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@types/jasmine": "~3.3.8",
@@ -50,6 +54,10 @@
   },
   "resolutions": {
     "minimist": "^1.2.5",
-    "yargs-parser": "^18.1.2"
+    "yargs-parser": "^18.1.2",
+    "engine.io": "^4.0.0",
+    "xmlhttprequest-ssl": "^1.6.2",
+    "socket.io-parser": "^3.3.2",
+    "glob-parent": "^5.1.2"
   }
 }
